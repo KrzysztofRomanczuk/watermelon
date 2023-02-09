@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>Quiz na podstawie samopoczucia</title>
+    <style>
+        body{
+            background-image: url("arbuzy.png");
+            background-size: cover;
+            color: black;
+        }
+        .quiz-container {
+          width: 50%;
+          margin: 0 auto;
+          text-align: center;
+          padding: 20px;
+          background-color: white;
+          background-size: cover;
+        }
+        .quiz-question {
+          font-size: 18px;
+          margin-bottom: 20px;
+        }
+        .quiz-answer {
+          display: inline-block;
+          margin: 0 10px;
+        }
+        .quiz-result {
+          margin-top: 20px;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Quiz na podstawie samopoczucia</h1>
+      <p class="quiz-question">Jak się czujesz dzisiaj?</p>
+      <div class="quiz-answer">
+        <input type="radio" id="feel-good" name="feeling" value="good">
+        <label for="feel-good">Dobrze</label>
+      </div>
+      <div class="quiz-answer">
+        <input type="radio" id="feel-bad" name="feeling" value="bad">
+        <label for="feel-bad">Źle</label>
+      </div>
+      <div class="quiz-answer">
+        <input type="radio" id="feel-neutral" name="feeling" value="neutral">
+        <label for="feel-neutral">Neutralnie</label>
+      </div>
+      <button id="submit-button">Zobacz wynik</button>
+      <p class="quiz-result" id="result"></p>
+    </div>
+  </body>
+  <script>
+    const submitButton = document.querySelector("#submit-button");
+    const resultElement = document.querySelector("#result");
+
+    submitButton.addEventListener("click", function() {
+      const feeling = document.querySelector('input[name="feeling"]:checked').value;
+      let arbuz;
+      let image;
+      
+      switch (feeling) {
+        case "good":
+        
+          arbuz = "Radosny arbuz";
+          image = '<img src="happy.png" alt="Sad Face"></img>';
+
+          
+          break;
+        case "bad":
+          arbuz = "Smutny arbuz";
+          image = '<img src="sad.png" alt="Sad Face"></img>';
+
+          break;
+        case "neutral":
+          arbuz = "Zdystansowany arbuz";
+          image = '<img src="neutral.png" alt="Sad Face"></img>';
+
+          break;
+        default:
+          arbuz = "Nieznany arbuz";
+      }
+      
+      resultElement.innerHTML = `Jesteś ${arbuz} ${image}`;
+
+
+    });
+  </script>
+</html>
